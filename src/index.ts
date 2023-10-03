@@ -1,5 +1,4 @@
-import './taskManager'
-import { Task } from './taskManager';
+import { Task, allTask } from './taskManager';
 
 interface Factory {
     create(name: string): Task
@@ -44,5 +43,4 @@ const PersonalTask = new personalTaskFactory();
 const myPersonnal = PersonalTask.create("personnal");
 const myProject = ProjectTask.create("project");
 
-console.log(myPersonnal)
-console.log(myProject)
+allTask.addTasks(myPersonnal && myProject);
