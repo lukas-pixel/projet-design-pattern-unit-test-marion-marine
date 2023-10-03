@@ -1,25 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const student_1 = require("./student");
-const worker_1 = require("./worker");
-class StudentAdapter {
-    constructor(student) {
+require("./observer");
+/*class StudentAdapter implements User {
+    
+    username: string;
+    student: Student;
+    constructor(student: Student) {
         this.student = student;
     }
-    getUsername() {
+
+    getUsername(): string {
         return `username: ${this.student.getFullname().toLocaleLowerCase()}`;
     }
-    login() {
+
+    login(): void {
         console.log('Im an adapted student');
     }
 }
-const users = [
-    new worker_1.Worker("abc123"),
-    new worker_1.Worker("vbn456"),
-    new worker_1.Administrator("admin123"),
-    new student_1.Student("jhon", "doe")
+
+const users: User[] = [
+    new Worker("abc123"),
+    new Worker("vbn456"),
+    new Administrator("admin123"),
 ];
+
 users.forEach((user) => {
     user.login();
-});
+})*/ 
 //# sourceMappingURL=index.js.map
