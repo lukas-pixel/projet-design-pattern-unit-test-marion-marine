@@ -9,7 +9,7 @@ class Worker {
         return this.username;
     }
     login() {
-        console.log("I'm doing ADMIN login stuff");
+        console.log("I'm doing login stuff");
     }
 }
 exports.Worker = Worker;
