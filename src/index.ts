@@ -43,4 +43,6 @@ const PersonalTask = new personalTaskFactory();
 const myPersonnal = PersonalTask.create("personnal");
 const myProject = ProjectTask.create("project");
 
-allTask.addTasks(myPersonnal && myProject);
+allTask.addTasks(myPersonnal);
+allTask.addTasks(myProject);
+allTask.displayTasks();
