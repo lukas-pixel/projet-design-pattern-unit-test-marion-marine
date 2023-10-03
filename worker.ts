@@ -1,4 +1,5 @@
-export interface User {
+import { Susbcriber } from "./observer";
+export interface User extends Susbcriber {
     username: string;
     getUsername(): string;
     login(): void;
@@ -16,6 +17,9 @@ export class Worker implements User {
     login() {
         console.log("I'm doing login stuff");
     }
+    notify(news: string): void {
+        console.log(news);
+    }
 }
 
 export class Administrator implements User {
@@ -32,6 +36,10 @@ export class Administrator implements User {
 
     login() {
         console.log("I'm doing ADMIN login stuff");
+    }
+
+    notify(news: string): void {
+        console.log(news);
     }
 
     changeUsername(user: User, nextUsername: string) {

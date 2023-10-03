@@ -17,6 +17,10 @@ class StudentAdapter implements User {
     login(): void {
         console.log('Im an adapted student');
     }
+
+    notify(news: string): void {
+        console.log(news);
+    }
 }
 
 const john = new Student("john", "doe")
@@ -30,4 +34,7 @@ const users: User[] = [
 
 users.forEach((user) => {
     user.login();
+    UnionPublisher.addSubscribers(user)
 })
+
+UnionPublisher.update('Je suis un article');

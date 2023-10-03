@@ -11,6 +11,9 @@ class Worker {
     login() {
         console.log("I'm doing login stuff");
     }
+    notify(news) {
+        console.log(news);
+    }
 }
 exports.Worker = Worker;
 class Administrator {
@@ -22,6 +25,9 @@ class Administrator {
     }
     login() {
         console.log("I'm doing ADMIN login stuff");
+    }
+    notify(news) {
+        console.log(news);
     }
     changeUsername(user, nextUsername) {
         user.username = nextUsername;

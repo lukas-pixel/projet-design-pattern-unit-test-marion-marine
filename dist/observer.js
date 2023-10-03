@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UnionPublisher = void 0;
 class Publisher {
     constructor() {
         this.susbscribers = [];
@@ -11,6 +12,7 @@ class Publisher {
         this.susbscribers.forEach((susbscriber) => susbscriber.notify(news));
     }
 }
+exports.UnionPublisher = new Publisher();
 /*class UnionSubriber implements Susbcriber {
     name: string;
 
