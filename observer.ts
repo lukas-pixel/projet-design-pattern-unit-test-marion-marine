@@ -1,5 +1,5 @@
 export interface Susbcriber {
-    sendNews(news: string): void
+    notify(news: string): void
 }
 
 class Publisher {
@@ -13,12 +13,17 @@ class Publisher {
         this.susbscribers.push(susbscriber);
     }
 
-    writeNews(news: string){
-        this.susbscribers.forEach((susbscriber) => susbscriber.sendNews(news))
+    update(news: string){
+        this.susbscribers.forEach((susbscriber) => susbscriber.notify(news))
     }
 }
 
-class UnionSubriber implements Susbcriber {
+export const UnionPublisher = new Publisher();
+
+
+
+
+/*class UnionSubriber implements Susbcriber {
     name: string;
 
     constructor(name: string) {
@@ -37,4 +42,4 @@ publisher.addSubscribers(new UnionSubriber("john"));
 publisher.addSubscribers(new UnionSubriber("alexandre"));
 publisher.addSubscribers(new UnionSubriber("marine"));
 
-publisher.writeNews("Bonjour aux syndiqué");
+publisher.writeNews("Bonjour aux syndiqué");*/

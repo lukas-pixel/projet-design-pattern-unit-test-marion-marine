@@ -1,8 +1,8 @@
 import { Student } from './student';
 import { User, Worker, Administrator } from './worker';
-import "./observer";
+import { UnionPublisher } from "./observer";
 
-/*class StudentAdapter implements User {
+class StudentAdapter implements User {
     
     username: string;
     student: Student;
@@ -19,12 +19,15 @@ import "./observer";
     }
 }
 
+const john = new Student("john", "doe")
+
 const users: User[] = [
     new Worker("abc123"), 
     new Worker("vbn456"), 
     new Administrator("admin123"),
+    new StudentAdapter(john)
 ];
 
 users.forEach((user) => {
     user.login();
-})*/
+})
