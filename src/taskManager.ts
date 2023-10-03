@@ -11,6 +11,9 @@ class taskManager {
     addTasks(task: Task) {
         this.tasks.push(task);
     }
+    displayTasks() {
+        console.log(this.tasks);
+    }
 }
 
 export const allTask = new taskManager();
