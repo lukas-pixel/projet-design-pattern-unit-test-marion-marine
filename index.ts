@@ -1,5 +1,5 @@
 import { Student } from './student'
-import { User, Worker, Administrator }
+import { User, Worker, Administrator } from './worker'
 
 class StudentAdapter implements User {
     username: string;
@@ -9,10 +9,10 @@ class StudentAdapter implements User {
     }
 
     getUsername(): string {
-        return this.student.getFullname();
+        return `username: ${this.student.getFullname().toLocaleLowerCase()}`;
     }
 
-    login(): viod {
+    login(): void {
         console.log('Im an adapted student');
     }
 }
@@ -21,7 +21,7 @@ const users: User[] = [
     new Worker("abc123"), 
     new Worker("vbn456"), 
     new Administrator("admin123"),
-    new Student("jhon", "doe")
+    new StudentAdapter("john")
 ];
 
 users.forEach((user) => {

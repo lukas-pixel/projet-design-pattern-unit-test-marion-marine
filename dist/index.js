@@ -1,34 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Administrator = exports.Worker = void 0;
-class Worker {
-    constructor(username) {
-        this.username = username;
+const student_1 = require("./student");
+const worker_1 = require("./worker");
+class StudentAdapter {
+    constructor(student) {
+        this.student = student;
     }
     getUsername() {
-        return this.username;
+        return `username: ${this.student.getFullname().toLocaleLowerCase()}`;
     }
     login() {
-        console.log("I'm doing login stuff");
+        console.log('Im an adapted student');
     }
 }
-exports.Worker = Worker;
-class Administrator {
-    constructor(username) {
-        this.username = username;
-    }
-    getUsername() {
-        return "admin#" + this.username;
-    }
-    login() {
-        console.log("I'm doing ADMIN login stuff");
-    }
-    changeUsername(user, nextUsername) {
-        user.username = nextUsername;
-    }
-}
-exports.Administrator = Administrator;
-const users = [new Worker("abc123"), new Worker("vbn456"), new Administrator("admin123")];
+const users = [
+    new worker_1.Worker("abc123"),
+    new worker_1.Worker("vbn456"),
+    new worker_1.Administrator("admin123"),
+    new student_1.Student("jhon", "doe")
+];
 users.forEach((user) => {
     user.login();
 });

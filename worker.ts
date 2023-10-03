@@ -1,4 +1,4 @@
-interface User {
+export interface User {
     username: string;
     getUsername(): string;
     login(): void;
@@ -11,7 +11,7 @@ export class Worker implements User {
         this.username = username;
     }
     getUsername() {
-        return this.username
+        return `username: ${this.username}`
     }
     login() {
         console.log("I'm doing login stuff");
@@ -27,7 +27,7 @@ export class Administrator implements User {
     }
 
     getUsername() {
-        return "admin#" + this.username
+        return `username: ${this.username}`
     }
 
     login() {
