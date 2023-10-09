@@ -1,7 +1,6 @@
-const { it } = require('node:test');
+/*const { it } = require('node:test');
 const { describe } = require('yargs');
-const { add, multiplyArray, calculateFactorial } = require('./math');
-
+const { add, multiplyArray, calculateFactorial, transformUsers } = require('./math');
 
 describe("Add function", () => {
     it("should add numbers", () => {
@@ -41,14 +40,85 @@ describe('Multiplying an Array of Numbers Function', () => {
     });
   });
 
-  describe("calculate factorial function", () => {
-      it("should throw an error when a string is used", () => {
-          expect(() => calculateFactorial("FACTORIAL")).toThrow("Input must be a non-negative number");
-      });
-      it("it should return 1 if n = 0", () => {
-        expect(() => calculateFactorial(0)).toThrow(1);
-      });
-      it("it should return 1 if n = 1", () => {
-        expect(() => calculateFactorial(1)).toThrow(1);
-      });
-  })
+  describe("calculate factorial function",()=>{
+    it("should throw an error if arg is a string", ()=>{ expect(()=>calculateFactorial("FACTORIAL")).toThrow("Input must be a non-negative number"); })
+    it("should throw an error if arg is lower than 0", ()=>{expect(calculateFactorial(-5)).toThrow("Input must be a non-negative number"); })
+    it("should return 1 if arg is 0", ()=>{ expect(calculateFactorial(0)).toBe(1); })
+    it("should return 1 if arg is 1", ()=>{ expect(calculateFactorial(1)).toBe(1); })
+    it("should pass the right factorial", ()=>{ 
+        expect(calculateFactorial(2)).toBe(2);
+        expect(calculateFactorial(4)).toBe(24);
+        expect(calculateFactorial(8)).toBe(40320);
+        expect(calculateFactorial(21)).not.toBe(42);
+    })
+});
+*/
+
+const { users, tooManyUsers, expectedUsers, transformUsers } = require("./math");
+
+  const users = [
+    {
+        id: 0,
+        body: {
+            userName: "julien",
+            userAge: 23,
+        }
+    },
+    {
+        id: 1,
+        body: {
+            userName: "adrien",
+            userAge: 58,
+        }
+    },
+    {
+        id: 2,
+        body: {
+            userName: "jules",
+            userAge: 7,
+        }
+    },
+];
+
+
+const expectedUsers = [
+    {
+        id: 0,
+        name: "julien",
+        age: 23,
+     
+    },
+    {
+        id: 1,
+        name: "adrien",
+        age: 58,
+    },
+    {
+        id: 2,
+        name: "jules",
+        age: 7,
+    },
+];
+
+const tooManyUsers = users.concat(users).concat(users);
+
+describe("transform User", () => {
+    it('should throw if no users provided', () => {
+        expect(() => transformUsers(123)).toThrow("Users must be provided.");
+        expect(() => transformUsers("salut")).toThrow("Users must be provided.");
+        expect(() => transformUsers(undefined)).toThrow("Users must be provided.");
+        expect(() => transformUsers(null)).toThrow("Users must be provided.");
+    });
+
+    it('should throw if users not correct', () => {
+      expect(() => transformUsers(["users1", "users2"])).toThrow("Users must be provided.");
+    })
+
+    it('should throw if too manyUsers provided', () => {
+        expect(() => transformUsers(tooManyUsers)).toThrow("Too many users provided.");
+    });
+
+    it('should transform users to the good model', () => {
+        expect(transformUsers(users)).toStrictEqual(expectedUsers);
+    });
+})

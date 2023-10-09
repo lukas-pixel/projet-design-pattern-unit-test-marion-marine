@@ -1,4 +1,4 @@
-const add = (a, b) => {
+/*const add = (a, b) => {
     return a + b;
   }
 
@@ -29,6 +29,68 @@ const calculateFactorial = (n) => {
     }
   
     return result;
-  }
+  }*/
+
+  const users = [
+    {
+        id: 0,
+        body: {
+            userName: "julien",
+            userAge: 23,
+        }
+    },
+    {
+        id: 1,
+        body: {
+            userName: "adrien",
+            userAge: 58,
+        }
+    },
+    {
+        id: 2,
+        body: {
+            userName: "jules",
+            userAge: 7,
+        }
+    },
+  ];
   
-  module.exports = { add, multiplyArray, calculateFactorial };
+  
+  const expectedUsers = [
+    {
+        id: 0,
+        name: "julien",
+        age: 23,
+  
+    },
+    {
+        id: 1,
+        name: "adrien",
+        age: 58,
+    },
+    {
+        id: 2,
+        name: "jules",
+        age: 7,
+    },
+  ];
+  
+  const tooManyUsers = users.concat(users).concat(users);
+  
+  const transformUsers = (_users) => {
+    if (!Array.isArray(_users)) {
+      throw new Error("Users must be provided.");
+    }
+  
+    if (_users.length > users.length) {
+      throw new Error("Too many users provided.");
+    }
+  
+      return _users.map(user => ({
+        id: user.id,
+        name: user.body.userName,
+        age: user.body.userAge,
+      }));
+  };
+  
+  module.exports = { users, tooManyUsers, expectedUsers, transformUsers };
